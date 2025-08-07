@@ -13,10 +13,12 @@ class Book:
     def info(self):
         if self.reserv:
             print(
-                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, материал: {Book.material_stranic}, зарезервирована')
+                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, '
+                f'материал: {Book.material_stranic}, зарезервирована')
         else:
             print(
-                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, материал: {Book.material_stranic}')
+                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, '
+                f'материал: {Book.material_stranic}')
 
 
 book1 = Book('Идиот', 'Достоевский', 500, '1_1')
@@ -39,14 +41,15 @@ class Uchebniki(Book):
         self.shk_class = shk_class
         self.zadanie = zadanie
 
-
     def info(self):
         if self.reserv:
             print(
-                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, предмет: {self.predmet}, класс: {self.shk_class}, зарезервирована')
+                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, '
+                f'предмет: {self.predmet}, класс: {self.shk_class}, зарезервирована')
         else:
             print(
-                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, предмет: {self.predmet}, класс: {self.shk_class}')
+                f'Название: {self.nazvanie}, Автор: {self.avtor}, страниц: {self.kol_stranic}, '
+                f'предмет: {self.predmet}, класс: {self.shk_class}')
 
 
 uchebnik1 = Uchebniki('Математика', 'Иванов', 500, '1_1_1', 'Математика', 5, False)
