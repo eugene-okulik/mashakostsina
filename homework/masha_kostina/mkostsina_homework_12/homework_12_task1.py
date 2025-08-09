@@ -65,6 +65,12 @@ dahlia = Aster('Георгина', 'желтый', 100, 8, 10)
 
 bouquet = Bouquet([bergrass, cornflower, dahlia])
 
+total_price = bouquet.get_price()
+print(f'Стоимость букета: {total_price} руб.')
+
+wilting_time = round(bouquet.wilting_time())
+print(f'Время увядания: {wilting_time} дней')
+
 bouquet.sort_flowers_lifespan()
 print(bouquet)
 
