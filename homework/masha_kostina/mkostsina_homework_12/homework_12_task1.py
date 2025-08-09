@@ -8,7 +8,7 @@ class Flowers:
         self.avg_lifespan = avg_lifespan
 
     def __repr__(self):
-        return f'{self.name} ({self.color}, {self.stem_length} см, {self.price} руб, в букете живет {self.avg_lifespan} дней)'
+        return f'{self.name} ({self.color}, {self.stem_length} см, {self.price} руб, {self.avg_lifespan} дней)'
 
 
 class Greens(Flowers):
