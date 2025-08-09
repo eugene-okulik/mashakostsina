@@ -43,14 +43,14 @@ class Bouquet:
     def sort_flowers_lifespan(self):
         self.flowers.sort(key=lambda flower: flower.avg_lifespan)
 
-    def sort_by_color(self, reverse=False):
+    def sort_by_color(self):
         self.flowers.sort(key=lambda flower: flower.color)
 
-    def sort_by_stem_length(self, reverse=False):
-        self.flowers.sort(key=lambda flower: flower.stem_length, reverse=reverse)
+    def sort_by_stem_length(self):
+        self.flowers.sort(key=lambda flower: flower.stem_length)
 
-    def sort_by_price(self, reverse=False):
-        self.flowers.sort(key=lambda flower: flower.price, reverse=reverse)
+    def sort_by_price(self):
+        self.flowers.sort(key=lambda flower: flower.price)
 
     def find_flower(self, value):
         return [flower for flower in self.flowers if flower.avg_lifespan == value]
