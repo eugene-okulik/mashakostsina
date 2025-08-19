@@ -60,11 +60,11 @@ cursor.executemany(
 )
 
 cursor.execute("SELECT value FROM marks WHERE student_id = %s", (student_id,))
-marks = cursor.fetchone()
+marks = cursor.fetchall()
 print(marks)
 
 cursor.execute("SELECT title FROM books WHERE taken_by_student_id = %s", (student_id,))
-books = cursor.fetchone()
+books = cursor.fetchall()
 print(books)
 
 select_query = """
