@@ -68,7 +68,7 @@ books = cursor.fetchone()
 print(books)
 
 select_query = """
-SELECT 
+SELECT
     s.id,
     s.name,
     s.second_name,
