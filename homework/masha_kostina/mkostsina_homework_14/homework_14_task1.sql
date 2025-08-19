@@ -1,4 +1,4 @@
-INSERT INTO students (name, second_name , group_id) VALUES ('M', 'Kostsina', 1)
+INSERT INTO students (name, second_name) VALUES ('M', 'Kostsina')
 
 INSERT INTO `groups` (title, start_date, end_date) VALUES ('Group for mkostsina', 'aug 2025', 'sep 2025')
 
