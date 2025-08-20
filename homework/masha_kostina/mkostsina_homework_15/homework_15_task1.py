@@ -10,42 +10,49 @@ db = mysql.connect(
 )
 
 cursor = db.cursor(dictionary=True)
-cursor.execute("INSERT INTO students (name, second_name) VALUES ('M', 'Kostina2')")
+cursor.execute("INSERT INTO students (name, second_name) VALUES ('M', 'Kostina3')")
 student_id = cursor.lastrowid
 
 cursor.execute(
-    "INSERT INTO `groups` (title, start_date, end_date) VALUES ('Group for mkostina2', 'aug 2025', 'sep 2025')")
+    "INSERT INTO `groups` (title, start_date, end_date) VALUES ('Group for mkostina3', 'aug 2025', 'sep 2025')")
 group_id = cursor.lastrowid
 
 cursor.execute("UPDATE students SET group_id = %s where id = %s", (group_id, student_id))
 
-book_ids = []
-books = ['PFirstM2', 'PSecondM2']
-for book in books:
-    cursor.execute("INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)", (book, student_id))
-    book_ids.append(cursor.lastrowid)
+insert_query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
+cursor.executemany(
+    insert_query, [
+        ('PFirstM3', student_id),
+        ('PSecondM3', student_id)
+    ]
+)
 
 subject_ids = []
-subjects = ['PFirstS2', 'PSecondS2']
+subjects = ['PFirstS3', 'PSecondS3']
 for subj in subjects:
     cursor.execute("INSERT INTO subjects (title) VALUES (%s)", (subj,))
     subject_ids.append(cursor.lastrowid)
 
 lesson_ids = []
 lessons = [
-    ('PFirstL2', subject_ids[0]),
-    ('PSecondL2', subject_ids[0]),
-    ('PFirstLL2', subject_ids[1]),
-    ('PSecondLL2', subject_ids[1])
+    ('PFirstL3', subject_ids[0]),
+    ('PSecondL3', subject_ids[0]),
+    ('PFirstLL3', subject_ids[1]),
+    ('PSecondLL3', subject_ids[1])
 ]
 for title, subj_id in lessons:
     cursor.execute("INSERT INTO lessons (title, subject_id) VALUES (%s, %s)", (title, subj_id))
     lesson_ids.append(cursor.lastrowid)
 
-marks_values = [12, 10, 12, 10]
-for value, lesson_id in zip(marks_values, lesson_ids):
-    cursor.execute("INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)",
-                   (value, lesson_id, student_id))
+insert_query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
+cursor.executemany(
+    insert_query, [
+        (12, lesson_ids[0], student_id),
+        (10, lesson_ids[1], student_id),
+        (12, lesson_ids[2], student_id),
+        (10, lesson_ids[3], student_id)
+    ]
+)
 
 cursor.execute("SELECT value FROM marks WHERE student_id = %s", (student_id,))
 marks = cursor.fetchall()
