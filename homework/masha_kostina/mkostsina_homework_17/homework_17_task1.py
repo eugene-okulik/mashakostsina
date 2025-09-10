@@ -51,6 +51,6 @@ def analyze_logs():
     if matches_found == 0:
         print("Совпадений не найдено.")
 
+
 if __name__ == "__main__":
     analyze_logs()
-
