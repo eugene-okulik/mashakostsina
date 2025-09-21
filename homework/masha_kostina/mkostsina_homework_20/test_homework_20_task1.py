@@ -21,8 +21,7 @@ def new_obj_id():
     body = {"name": "New object", "data": {'color': 'pink', 'size': 'medium'}}
     response = requests.post("http://objapi.course.qa-practice.com/object", json=body)
     obj_id = response.json()['id']
-    yield obj_id
-    requests.delete(f"http://objapi.course.qa-practice.com/object/{obj_id}")
+    return obj_id
 
 
 @pytest.mark.medium
@@ -79,4 +78,3 @@ def test_delete_obj():
 
     get_response = requests.get(f"http://objapi.course.qa-practice.com/object/{obj_id}")
     assert get_response.status_code == 404
-    
