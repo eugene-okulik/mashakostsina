@@ -21,7 +21,8 @@ def new_obj_id():
     body = {"name": "New object", "data": {'color': 'pink', 'size': 'medium'}}
     response = requests.post("http://objapi.course.qa-practice.com/object", json=body)
     obj_id = response.json()['id']
-    return obj_id
+    yield obj_id
+    requests.delete(f"http://objapi.course.qa-practice.com/object/{obj_id}")
 
 
 @pytest.mark.medium
@@ -67,14 +68,9 @@ def test_patch_obj(new_obj_id):
     assert response['data']['size'] == 'medium'
 
 
-def test_delete_obj():
-    body = {"name": "Object to delete", "data": {'color': 'yellow', 'size': 'medium'}}
-    response = requests.post("http://objapi.course.qa-practice.com/object", json=body)
-    assert response.status_code == 200
-    obj_id = response.json()['id']
-
-    delete_response = requests.delete(f"http://objapi.course.qa-practice.com/object/{obj_id}")
+def test_delete_obj(new_obj_id):
+    delete_response = requests.delete(f"http://objapi.course.qa-practice.com/object/{new_obj_id}")
     assert delete_response.status_code == 200
 
-    get_response = requests.get(f"http://objapi.course.qa-practice.com/object/{obj_id}")
+    get_response = requests.get(f"http://objapi.course.qa-practice.com/object/{new_obj_id}")
     assert get_response.status_code == 404
