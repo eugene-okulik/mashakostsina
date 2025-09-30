@@ -26,6 +26,7 @@ def new_obj_id():
     yield obj_id
     requests.delete(f"http://objapi.course.qa-practice.com/object/{obj_id}")
 
+
 @pytest.fixture
 def attach_response():
     def attach(response, name="Request/Response"):
@@ -47,6 +48,7 @@ def attach_response():
         except (json.JSONDecodeError, ValueError):
             return response.text
     return attach
+
 
 def pytest_configure(config):
     config.addinivalue_line("markers", "medium: marks tests as medium priority")

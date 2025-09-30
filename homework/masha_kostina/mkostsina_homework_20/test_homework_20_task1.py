@@ -45,7 +45,7 @@ def test_get_obj_by_id(new_obj_id, attach_response):
     {"name": "New object3", "data": {'color': 'red', 'size': 'medium'}}
 ])
 def test_create_obj(body, new_obj_id, attach_response):
-    with allure.step(f'Create 3 different objects'):
+    with allure.step("Create an object"):
         response = attach_response(
             requests.post("http://objapi.course.qa-practice.com/object", json=body),
             name="Create object"
@@ -53,7 +53,7 @@ def test_create_obj(body, new_obj_id, attach_response):
     with allure.step("Check response's status code"):
         assert requests.post("http://objapi.course.qa-practice.com/object", json=body).status_code == 200, \
             'Status code is incorrect'
-    with allure.step(f'Check id in response'):
+    with allure.step("Check id in response"):
         assert response['id'] == new_obj_id + 1, 'ID is incorrect'
 
 
