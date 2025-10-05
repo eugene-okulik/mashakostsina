@@ -7,7 +7,6 @@ class Endpoint:
     response = None
     json_response = None
 
-
     @allure.step("Set and parse response")
     def _set_response(self, response):
         self.response = response
@@ -37,33 +36,27 @@ class Endpoint:
             self.json_response = None
         return self.json_response
 
-
     @allure.step("Check response's status code")
     def check_response_status_code(self):
         assert self.response.status_code == 200, 'Status code is not 200'
-
 
     @allure.step("Check response's name")
     def check_response_name(self, name):
         assert self.json_response is not None, 'Response JSON is empty'
         assert self.json_response['name'] == name, 'Name is incorrect'
 
-
     @allure.step("Check response's data")
     def check_response_data(self, data):
         assert self.json_response is not None, 'Response JSON is empty'
         assert self.json_response['data'] == data, 'Data is incorrect'
 
-
     @allure.step("Check response color")
     def check_response_color(self, color):
         assert self.json_response['data']['color'] == color, 'Color is incorrect'
 
-
     @allure.step("Check response size")
     def check_response_size(self, size):
         assert self.json_response['data']['size'] == size, 'Size is incorrect'
-
 
     @allure.step("Check bad request (400)")
     def check_bad_request(self):

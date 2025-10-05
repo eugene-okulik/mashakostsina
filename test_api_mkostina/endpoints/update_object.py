@@ -9,12 +9,10 @@ class UpdateObject(Endpoint):
     def update_put_object(self, payload, obj_id):
         return self._set_response(requests.put(f"{self.url}/{obj_id}", json=payload))
 
-
     @allure.step("Patch an object")
     def update_patch_object(self, payload, obj_id):
         return self._set_response(requests.patch(f"{self.url}/{obj_id}", json=payload))
 
-    
     @allure.step("Check response's id")
     def check_response_id(self, id):
         actual_id = self.json_response['id']
