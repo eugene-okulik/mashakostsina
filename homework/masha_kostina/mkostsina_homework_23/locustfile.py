@@ -4,11 +4,9 @@ import random
 
 class Object(HttpUser):
 
-
     @task(1)
     def get_all_objects(self):
         self.client.get("/object")
-
 
     @task(3)
     def get_one_object(self):
